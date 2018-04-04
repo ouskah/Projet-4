@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<body id="page-top" class="index">
+
+    <!-- Header -->
+    <header>
+      <div class="container" id="maincontent" tabindex="-1">
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3">
+              <div class="card">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h2 id="user_name">Prédiction des retards de vols d'avions</h2>
+                  </div>
+                  <div class="col-sm-12">
+                    <p id="description" class="blur">Remplissez tous les paramètres et appuyer sur le bouton prédire</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </header>
+	<fieldset>
+	    <form method="post">
+		    <div class="row">
+			      <div class="col-sm-12">
+			        <p id="description" class="blur">Votre date de départ:</p>
+			      </div>
+		    	<input type="date" name="flight_date" id="flight_date" placeholder="jj/mm/aaaa" required/>
+		    </div>
+
+
+		    <div class="row">
+			      <div class="col-sm-12">
+			        <p id="description" class="blur">L'heure de départ:</p>
+			      </div>
+		    	<input type="time" name="departure_hour" id="departure_hour"  required/>
+		    </div>
+
+		    <div class="row">
+			      <div class="col-sm-12">
+			        <p id="description" class="blur">L'heure d'arrivée:</p>
+			      </div>
+		    	<input type="time" name="arrival_hour" id="arrival_hour" required/>
+		    </div>
+
+		    <div class="row">
+			      <div class="col-sm-12">
+			        <p id="description" class="blur">Votre compagnie aérienne (en deux lettres):</p>
+			      </div>
+			      <select name="flight_company" id = "flight_company">
+						{% for airline in company_list %}
+							<option value = '{{ airline}}'> {{ airline}} </option>
+						{% endfor %}
+					</select>
+		    </div>
+
+		    <div class="row">
+			      <div class="col-sm-12">
+			        <p id="description" class="blur">L'aéroport de départ (identifiant en trois lettres):</p>
+			      </div>
+					<select name="flight_origin" id = "flight_origin">
+						{% for airport_name in airport_origin %}
+							<option value = '{{ airport_name}}'> {{ airport_name}} </option>
+						{% endfor %}
+					</select>
+		    </div>
+
+		    <div class="row">
+			      <div class="col-sm-12">
+			        <p id="description" class="blur">L'aéroport d'arrivée (identifiant en trois lettres):</p>
+			      </div>
+					<select name="flight_dest" id = "flight_dest">
+						{% for airport_name in airport_destination %}
+							<option value = '{{ airport_name}}'> {{ airport_name}} </option>
+						{% endfor %}
+					</select>
+								
+		    </div>
+
+		    <div class="row">
+			      <div class="col-sm-12">
+			        <p id="description" class="blur">La distance du vol:</p>
+			      </div>
+		    	<input type="number" name="distance" id="distance" required/>
+		    </div>
+
+		    <div class="row">
+			      <div class="col-sm-12">
+			        <p id="description" class="blur">Le nombre de vols aui décollent dans l'heure (optionnel):</p>
+			      </div>
+		    	<input type="number" name="nb_flights_departure" id="nb_flights_departure" />
+		    </div>
+
+		    <div class="row">
+			      <div class="col-sm-12">
+			        <p id="description" class="blur">Le nombre de vols qui arrivent dans l'heure (optionnel):</p>
+			      </div>
+		    	<input type="number" name="nb_flights_arrival" id="nb_flights_arrival" />
+		    </div>
+			<p id="description" class="blur">
+				<div class="row" >
+					<input type="submit" value="Prédiction"/> 
+				</div>
+			</p>
+		</form>
+	</fieldset>
+
+</body>
+
+</html>
